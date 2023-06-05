@@ -22,6 +22,12 @@ jobs:
         with:
           persist-credentials: false
 
+      # 指定node版本
+      - name: Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
       # 执行npm脚本打包项目
       - name: Install and Build
         run: |
