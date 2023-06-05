@@ -1,6 +1,7 @@
 import { Component, Vue } from 'vue-property-decorator'
 
 import Resume from './Resume'
+import './index.scss'
 
 @Component({
   name: 'Content'

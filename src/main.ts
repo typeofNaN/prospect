@@ -5,6 +5,7 @@ import Vue from 'vue'
 import App from '@/App'
 import store from '@/store'
 import '@/plugins'
+import '@/icons/components'
 
 import '@/styles/index.scss'
 
