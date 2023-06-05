@@ -3,7 +3,10 @@ import 'babel-polyfill'
 import Vue from 'vue'
 
 import App from '@/App'
+import store from '@/store'
 import '@/plugins'
+
+import '@/styles/index.scss'
 
 Vue.config.productionTip = false
 
@@ -30,5 +33,6 @@ Vue.prototype.$on = function (eventType: string, func: Function) {
 }
 
 new Vue({
+  store,
   render: h => h(App)
 }).$mount('#app')

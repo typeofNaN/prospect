@@ -5,17 +5,16 @@ const path = require('path')
 // use administrator privileges to execute the command line.
 // For example, on Mac: sudo npm run / sudo yarn
 const devServerPort = 8080 // TODO: get this variable from setting.ts
-const mockServerPort = 9528 // TODO: get this variable from setting.ts
 const name = 'prospect' // TODO: get this variable from setting.ts
 
 module.exports = {
   // publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
-  publicPath: '/',
+  publicPath: './',
   lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: false,
   devServer: {
     port: devServerPort,
-    open: true,
+    open: false,
     overlay: {
       warnings: false,
       errors: true
