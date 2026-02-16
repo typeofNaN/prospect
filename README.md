@@ -52,6 +52,8 @@ pnpm build
 pnpm preview
 ```
 
+头部 GitHub 图标指向的源码仓库地址来自 `package.json` 的 `homepage` 字段，修改该字段即可更换链接。
+
 ## 项目结构
 
 ```

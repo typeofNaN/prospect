@@ -4,6 +4,24 @@
   "private": true,
   "type": "module",
   "packageManager": "pnpm@9.14.2",
+  "author": {
+    "name": "typeofNaN",
+    "url": "https://github.com/typeofNaN",
+    "email": "dmdefine6@gmail.com"
+  },
+  "homepage": "https://github.com/typeofNaN/prospect",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/typeofNaN/prospect.git"
+  },
+  "bugs": {
+    "url": "https://github.com/typeofNaN/prospect/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "resume"
+  ],
+  "description": "在线简历生成器",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

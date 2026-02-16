@@ -14,8 +14,12 @@ import i18n, { type Lang } from './locales/i18n'
 import { ResumeForm } from './components/ResumeForm'
 import { ResumePreview } from './components/ResumePreview'
 import templates from './templates'
+import pkg from '../package.json'
 
 const { Header, Sider, Content } = Layout
+
+/** 源码仓库地址，取自 package.json homepage */
+const GITHUB_REPO_URL = (pkg as { homepage?: string }).homepage ?? ''
 
 /** 主题色预设（中文命名） */
 const THEME_COLORS = [
@@ -190,6 +194,19 @@ function App() {
             </Tooltip>
             {mode === 'preview' && (
               <Button type="primary" size="small" onClick={handlePrint}>{t('print')}</Button>
+            )}
+            {GITHUB_REPO_URL && (
+              <Tooltip title="源码仓库">
+                <Button
+                  type="text"
+                  size="small"
+                  icon={<Icon icon="mdi:github" />}
+                  href={GITHUB_REPO_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                />
+              </Tooltip>
             )}
           </Space>
         </Header>
