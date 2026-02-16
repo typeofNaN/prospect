@@ -16,23 +16,25 @@ jobs:
     steps:
       # 步骤名
       - name: Checkout
-        # 使用的actions脚本，这里是官方提供的获取源码脚本
-        uses: actions/checkout@v2.3.1
-        # 这个为使用 JamesIves/github-pages-deploy-action脚本所需要的配置
-        with:
-          persist-credentials: false
+        uses: actions/checkout@v4
 
-      # 指定node版本
-      - name: Node
-        uses: actions/setup-node@v3
+      # 指定 Node 与 pnpm（与 package.json packageManager 一致）
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
         with:
-          node-version: '16'
+          version: 9
 
-      # 执行npm脚本打包项目
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      # 安装依赖并打包
       - name: Install and Build
         run: |
-          npm install
-          npm run build
+          pnpm install --frozen-lockfile
+          pnpm run build
 
       # 执行JamesIves/github-pages-deploy-action将项目发布到Github Pages
       - name: Deploy
