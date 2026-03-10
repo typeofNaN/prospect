@@ -59,8 +59,10 @@ const initialResumeData: ResumeData = {
   email: 'zhangsan@example.com',
   phone: '138 0000 0000',
   location: '北京',
-  summary: '3 年前端开发经验，熟悉 React、TypeScript 与工程化实践，有从 0 到 1 搭建项目与团队协作经验。',
-  selfEvaluation: '学习能力强，注重代码质量与可维护性；具备良好的沟通与团队协作能力，能独立负责模块开发与推进。',
+  summary:
+    '3 年前端开发经验，熟悉 React、TypeScript 与工程化实践，有从 0 到 1 搭建项目与团队协作经验。',
+  selfEvaluation:
+    '学习能力强，注重代码质量与可维护性；具备良好的沟通与团队协作能力，能独立负责模块开发与推进。',
   skills: ['React', 'TypeScript', 'Vite', 'Node.js', 'CSS'],
   experience: [
     {

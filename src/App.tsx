@@ -2,7 +2,7 @@
  * App - 根组件
  * 布局、URL 参数同步、模板/主题/语言切换、导入导出、打印
  */
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ConfigProvider, Layout, Button, Segmented, Select, Space, message, Tooltip } from 'antd'
 import { Icon } from '@iconify/react'
@@ -62,20 +62,23 @@ function setUrlParams(params: { template?: TemplateId; lang?: string; mode?: str
 
 function App() {
   const [data, setData] = useState<ResumeData>(() => getDefaultResumeData())
-  const [templateId, setTemplateId] = useState<TemplateId>('classic')
-  const [lang, setLang] = useState<Lang>('zh')
-  const [mode, setMode] = useState<'edit' | 'preview'>('edit')
+
+  const initialState = useMemo(() => {
+    const { template, lang: l, mode: m } = parseUrlParams()
+    return {
+      templateId: (['classic', 'modern', 'minimal'].includes(template)
+        ? template
+        : 'classic') as TemplateId,
+      lang: l,
+      mode: (m === 'preview' ? 'preview' : 'edit') as 'edit' | 'preview',
+    }
+  }, [])
+  const [templateId, setTemplateId] = useState<TemplateId>(initialState.templateId)
+  const [lang, setLang] = useState<Lang>(initialState.lang)
+  const [mode, setMode] = useState<'edit' | 'preview'>(initialState.mode)
   const [themeColor, setThemeColor] = useState('#2d5a4a')
 
   const { t } = useTranslation()
-
-  useEffect(() => {
-    const { template, lang: l, mode: m } = parseUrlParams()
-    setTemplateId(['classic', 'modern', 'minimal'].includes(template) ? template : 'classic')
-    setLang(l)
-    setMode(m === 'preview' ? 'preview' : 'edit')
-    i18n.changeLanguage(l)
-  }, [])
 
   useEffect(() => {
     i18n.changeLanguage(lang)
@@ -146,11 +149,11 @@ function App() {
       }}
     >
       <Layout className="print:!block h-screen overflow-hidden flex flex-col">
-        <Header
-          className="print:!hidden shrink-0 bg-white border-b border-[#f0f0f0] px-6 flex items-center justify-between flex-wrap gap-3"
-        >
+        <Header className="print:!hidden shrink-0 bg-white border-b border-[#f0f0f0] px-6 flex items-center justify-between flex-wrap gap-3">
           <Space size="middle">
-            <span className="font-semibold text-xl" style={{ color: themeColor }}>{t('appTitle')}</span>
+            <span className="font-semibold text-xl" style={{ color: themeColor }}>
+              {t('appTitle')}
+            </span>
             <Segmented
               size="small"
               value={mode}
@@ -184,16 +187,33 @@ function App() {
               />
             </div>
             <Tooltip title={lang === 'zh' ? t('switchToEnglish') : t('switchToChinese')}>
-              <Button type="text" size="small" icon={<Icon icon="mdi:translate" />} onClick={() => setLang(lang === 'zh' ? 'en' : 'zh')} />
+              <Button
+                type="text"
+                size="small"
+                icon={<Icon icon="mdi:translate" />}
+                onClick={() => setLang(lang === 'zh' ? 'en' : 'zh')}
+              />
             </Tooltip>
             <Tooltip title={t('exportConfig')}>
-              <Button type="text" size="small" icon={<Icon icon="mdi:download-outline" />} onClick={handleExport} />
+              <Button
+                type="text"
+                size="small"
+                icon={<Icon icon="mdi:download-outline" />}
+                onClick={handleExport}
+              />
             </Tooltip>
             <Tooltip title={t('importConfig')}>
-              <Button type="text" size="small" icon={<Icon icon="mdi:upload-outline" />} onClick={handleImport} />
+              <Button
+                type="text"
+                size="small"
+                icon={<Icon icon="mdi:upload-outline" />}
+                onClick={handleImport}
+              />
             </Tooltip>
             {mode === 'preview' && (
-              <Button type="primary" size="small" onClick={handlePrint}>{t('print')}</Button>
+              <Button type="primary" size="small" onClick={handlePrint}>
+                {t('print')}
+              </Button>
             )}
             {GITHUB_REPO_URL && (
               <Tooltip title="源码仓库">
@@ -212,12 +232,8 @@ function App() {
         </Header>
 
         <Layout className="print:!block flex-row flex-1 min-h-0 overflow-hidden">
-          <Content
-            className="flex flex-col items-center p-6 print:!p-0 bg-[#f5f0e8] overflow-auto flex-1 min-w-0"
-          >
-            <div
-              className="w-full flex-1 print:shadow-none max-w-[210mm] min-h-[297mm] bg-white rounded-sm overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.08)]"
-            >
+          <Content className="flex flex-col items-center p-6 print:!p-0 bg-[#f5f0e8] overflow-auto flex-1 min-w-0">
+            <div className="w-full flex-1 print:shadow-none max-w-[210mm] min-h-[297mm] bg-white rounded-sm overflow-hidden shadow-[0_4px_24px_rgba(0,0,0,0.08)]">
               <ResumePreview>
                 <TemplateComponent data={data} themeColor={themeColor} />
               </ResumePreview>

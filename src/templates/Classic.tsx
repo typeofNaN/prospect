@@ -26,9 +26,7 @@ export default function Classic({ data, themeColor = '#2d5a4a' }: TemplateProps)
           <h1 className="m-0 mb-1 text-[24px] font-bold tracking-[0.02em]">
             {data.name || t('name')}
           </h1>
-          <p className="m-0 mb-1.5 text-[13px] text-[#444]">
-            {data.title || t('resumeTitle')}
-          </p>
+          <p className="m-0 mb-1.5 text-[13px] text-[#444]">{data.title || t('resumeTitle')}</p>
           <div className="flex flex-wrap justify-center gap-x-5 gap-y-0.5 text-[10.5px] text-[#555]">
             {data.email && <span>{data.email}</span>}
             {data.phone && <span>{data.phone}</span>}
@@ -45,9 +43,7 @@ export default function Classic({ data, themeColor = '#2d5a4a' }: TemplateProps)
           >
             {t('sectionSummary')}
           </h2>
-          <p className="m-0 text-justify text-[11px] text-[#333] leading-[1.65]">
-            {data.summary}
-          </p>
+          <p className="m-0 text-justify text-[11px] text-[#333] leading-[1.65]">{data.summary}</p>
         </section>
       )}
 
@@ -76,7 +72,9 @@ export default function Classic({ data, themeColor = '#2d5a4a' }: TemplateProps)
           <ul className="m-0 p-0 list-none text-[11px] text-[#444] leading-[1.8]">
             {data.skills.filter(Boolean).map((s, i) => (
               <li key={i} className="relative pl-3.5">
-                <span className="absolute left-0" style={{ color: themeColor }}>·</span>
+                <span className="absolute left-0" style={{ color: themeColor }}>
+                  ·
+                </span>
                 {s}
               </li>
             ))}
@@ -150,7 +148,12 @@ export default function Classic({ data, themeColor = '#2d5a4a' }: TemplateProps)
               </div>
               {proj.link && (
                 <div className="text-[10.5px] mb-1" style={{ color: themeColor }}>
-                  <a href={proj.link} target="_blank" rel="noopener noreferrer" style={{ color: themeColor }}>
+                  <a
+                    href={proj.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: themeColor }}
+                  >
                     {proj.link}
                   </a>
                 </div>

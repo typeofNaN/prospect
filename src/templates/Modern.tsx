@@ -52,9 +52,7 @@ export default function Modern({ data, themeColor = '#2d5a4a' }: TemplateProps) 
             >
               {t('sectionSummary')}
             </h2>
-            <p className="m-0 text-[10.5px] text-[#333] leading-[1.65]">
-              {data.summary}
-            </p>
+            <p className="m-0 text-[10.5px] text-[#333] leading-[1.65]">{data.summary}</p>
           </section>
         )}
 
@@ -66,9 +64,7 @@ export default function Modern({ data, themeColor = '#2d5a4a' }: TemplateProps) 
             >
               {t('sectionSelfEvaluation')}
             </h2>
-            <p className="m-0 text-[10.5px] text-[#333] leading-[1.65]">
-              {data.selfEvaluation}
-            </p>
+            <p className="m-0 text-[10.5px] text-[#333] leading-[1.65]">{data.selfEvaluation}</p>
           </section>
         )}
 
@@ -86,13 +82,9 @@ export default function Modern({ data, themeColor = '#2d5a4a' }: TemplateProps) 
                   <span className="text-[10.5px] text-[#555]">{exp.company}</span>
                   <span className="text-[9.5px] text-[#888] whitespace-nowrap">{exp.period}</span>
                 </div>
-                <h3 className="m-0 mb-1.5 text-[11.5px] font-semibold">
-                  {exp.position}
-                </h3>
+                <h3 className="m-0 mb-1.5 text-[11.5px] font-semibold">{exp.position}</h3>
                 {exp.description && (
-                  <p className="m-0 text-[10.5px] text-[#333] leading-[1.6]">
-                    {exp.description}
-                  </p>
+                  <p className="m-0 text-[10.5px] text-[#333] leading-[1.6]">{exp.description}</p>
                 )}
               </div>
             ))}
@@ -113,13 +105,9 @@ export default function Modern({ data, themeColor = '#2d5a4a' }: TemplateProps) 
                   <span className="text-[10.5px] text-[#555]">{edu.school}</span>
                   <span className="text-[9.5px] text-[#888] whitespace-nowrap">{edu.period}</span>
                 </div>
-                <h3 className="m-0 mb-1.5 text-[11.5px] font-semibold">
-                  {edu.major}
-                </h3>
+                <h3 className="m-0 mb-1.5 text-[11.5px] font-semibold">{edu.major}</h3>
                 {edu.description && (
-                  <p className="m-0 text-[10.5px] text-[#333] leading-[1.6]">
-                    {edu.description}
-                  </p>
+                  <p className="m-0 text-[10.5px] text-[#333] leading-[1.6]">{edu.description}</p>
                 )}
               </div>
             ))}
@@ -152,9 +140,7 @@ export default function Modern({ data, themeColor = '#2d5a4a' }: TemplateProps) 
                   </a>
                 )}
                 {proj.description && (
-                  <p className="m-0 text-[10.5px] text-[#333] leading-[1.6]">
-                    {proj.description}
-                  </p>
+                  <p className="m-0 text-[10.5px] text-[#333] leading-[1.6]">{proj.description}</p>
                 )}
               </div>
             ))}

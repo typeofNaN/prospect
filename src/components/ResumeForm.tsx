@@ -13,11 +13,7 @@ interface ResumeFormProps {
 }
 
 /** 不可变更新：用 updater(item) 替换 list[index] */
-function updateList<T>(
-  list: T[],
-  index: number,
-  updater: (item: T) => T
-): T[] {
+function updateList<T>(list: T[], index: number, updater: (item: T) => T): T[] {
   const next = [...list]
   next[index] = updater(next[index])
   return next
@@ -28,10 +24,7 @@ export function ResumeForm({ data, onChange }: ResumeFormProps) {
 
   const addExperience = () => {
     onChange({
-      experience: [
-        ...data.experience,
-        { company: '', position: '', period: '', description: '' },
-      ],
+      experience: [...data.experience, { company: '', position: '', period: '', description: '' }],
     })
   }
   const removeExperience = (i: number) => {
@@ -47,10 +40,7 @@ export function ResumeForm({ data, onChange }: ResumeFormProps) {
 
   const addEducation = () => {
     onChange({
-      education: [
-        ...data.education,
-        { school: '', major: '', period: '', description: '' },
-      ],
+      education: [...data.education, { school: '', major: '', period: '', description: '' }],
     })
   }
   const removeEducation = (i: number) => {
@@ -64,10 +54,7 @@ export function ResumeForm({ data, onChange }: ResumeFormProps) {
 
   const addProject = () => {
     onChange({
-      projects: [
-        ...data.projects,
-        { name: '', period: '', description: '', link: '' },
-      ],
+      projects: [...data.projects, { name: '', period: '', description: '', link: '' }],
     })
   }
   const removeProject = (i: number) => {
@@ -123,7 +110,10 @@ export function ResumeForm({ data, onChange }: ResumeFormProps) {
                 tabIndex={0}
                 aria-label={t('avatar')}
               />
-              <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none" aria-hidden>
+              <div
+                className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none"
+                aria-hidden
+              >
                 {data.avatar ? (
                   <img
                     src={data.avatar}
@@ -154,14 +144,18 @@ export function ResumeForm({ data, onChange }: ResumeFormProps) {
         <Form.Item label={t('name')}>
           <Input
             value={data.name}
-            onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => onChange({ name: e.target.value })}
+            onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+              onChange({ name: e.target.value })
+            }
             placeholder={t('placeholderName')}
           />
         </Form.Item>
         <Form.Item label={t('jobTitle')}>
           <Input
             value={data.title}
-            onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => onChange({ title: e.target.value })}
+            onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+              onChange({ title: e.target.value })
+            }
             placeholder={t('placeholderJob')}
           />
         </Form.Item>
@@ -169,28 +163,36 @@ export function ResumeForm({ data, onChange }: ResumeFormProps) {
           <Input
             type="email"
             value={data.email}
-            onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => onChange({ email: e.target.value })}
+            onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+              onChange({ email: e.target.value })
+            }
             placeholder={t('placeholderEmail')}
           />
         </Form.Item>
         <Form.Item label={t('phone')}>
           <Input
             value={data.phone}
-            onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => onChange({ phone: e.target.value })}
+            onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+              onChange({ phone: e.target.value })
+            }
             placeholder={t('placeholderPhone')}
           />
         </Form.Item>
         <Form.Item label={t('location')}>
           <Input
             value={data.location}
-            onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => onChange({ location: e.target.value })}
+            onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+              onChange({ location: e.target.value })
+            }
             placeholder={t('placeholderLocation')}
           />
         </Form.Item>
         <Form.Item label={t('summary')}>
           <Input.TextArea
             value={data.summary}
-            onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => onChange({ summary: e.target.value })}
+            onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+              onChange({ summary: e.target.value })
+            }
             placeholder={t('placeholderSummary')}
             rows={3}
           />
@@ -198,7 +200,9 @@ export function ResumeForm({ data, onChange }: ResumeFormProps) {
         <Form.Item label={t('selfEvaluation')}>
           <Input.TextArea
             value={data.selfEvaluation}
-            onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => onChange({ selfEvaluation: e.target.value })}
+            onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+              onChange({ selfEvaluation: e.target.value })
+            }
             placeholder={t('placeholderSelfEvaluation')}
             rows={3}
           />
@@ -208,7 +212,9 @@ export function ResumeForm({ data, onChange }: ResumeFormProps) {
             <div key={i} className="flex items-center gap-2 mb-2">
               <Input
                 value={skill}
-                onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => updateSkill(i, e.target.value)}
+                onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+                  updateSkill(i, e.target.value)
+                }
                 placeholder={t('placeholderSkills')}
                 className="flex-1"
               />
@@ -243,7 +249,9 @@ export function ResumeForm({ data, onChange }: ResumeFormProps) {
             <Form.Item label={t('company')}>
               <Input
                 value={exp.company}
-                onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => updateExperience(i, { company: e.target.value })}
+                onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+                  updateExperience(i, { company: e.target.value })
+                }
                 placeholder={t('placeholderCompany')}
               />
             </Form.Item>
@@ -252,7 +260,9 @@ export function ResumeForm({ data, onChange }: ResumeFormProps) {
                 <Form.Item label={t('position')}>
                   <Input
                     value={exp.position}
-                    onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => updateExperience(i, { position: e.target.value })}
+                    onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+                      updateExperience(i, { position: e.target.value })
+                    }
                     placeholder={t('placeholderPosition')}
                   />
                 </Form.Item>
@@ -261,7 +271,9 @@ export function ResumeForm({ data, onChange }: ResumeFormProps) {
                 <Form.Item label={t('period')}>
                   <Input
                     value={exp.period}
-                    onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => updateExperience(i, { period: e.target.value })}
+                    onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+                      updateExperience(i, { period: e.target.value })
+                    }
                     placeholder={t('placeholderPeriod')}
                   />
                 </Form.Item>
@@ -270,7 +282,9 @@ export function ResumeForm({ data, onChange }: ResumeFormProps) {
             <Form.Item label={t('description')}>
               <Input.TextArea
                 value={exp.description}
-                onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => updateExperience(i, { description: e.target.value })}
+                onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+                  updateExperience(i, { description: e.target.value })
+                }
                 placeholder={t('placeholderDesc')}
                 rows={2}
               />
@@ -302,7 +316,9 @@ export function ResumeForm({ data, onChange }: ResumeFormProps) {
             <Form.Item label={t('school')}>
               <Input
                 value={edu.school}
-                onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => updateEducation(i, { school: e.target.value })}
+                onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+                  updateEducation(i, { school: e.target.value })
+                }
                 placeholder={t('placeholderSchool')}
               />
             </Form.Item>
@@ -311,7 +327,9 @@ export function ResumeForm({ data, onChange }: ResumeFormProps) {
                 <Form.Item label={t('major')}>
                   <Input
                     value={edu.major}
-                    onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => updateEducation(i, { major: e.target.value })}
+                    onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+                      updateEducation(i, { major: e.target.value })
+                    }
                     placeholder={t('placeholderMajor')}
                   />
                 </Form.Item>
@@ -320,7 +338,9 @@ export function ResumeForm({ data, onChange }: ResumeFormProps) {
                 <Form.Item label={t('period')}>
                   <Input
                     value={edu.period}
-                    onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => updateEducation(i, { period: e.target.value })}
+                    onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+                      updateEducation(i, { period: e.target.value })
+                    }
                     placeholder={t('placeholderEduPeriod')}
                   />
                 </Form.Item>
@@ -329,7 +349,9 @@ export function ResumeForm({ data, onChange }: ResumeFormProps) {
             <Form.Item label={t('descriptionOptional')}>
               <Input
                 value={edu.description ?? ''}
-                onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => updateEducation(i, { description: e.target.value })}
+                onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+                  updateEducation(i, { description: e.target.value })
+                }
                 placeholder={t('placeholderEduDesc')}
               />
             </Form.Item>
@@ -359,21 +381,27 @@ export function ResumeForm({ data, onChange }: ResumeFormProps) {
             <Form.Item label={t('projectName')}>
               <Input
                 value={proj.name}
-                onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => updateProject(i, { name: e.target.value })}
+                onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+                  updateProject(i, { name: e.target.value })
+                }
                 placeholder={t('placeholderProjectName')}
               />
             </Form.Item>
             <Form.Item label={t('period')}>
               <Input
                 value={proj.period}
-                onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => updateProject(i, { period: e.target.value })}
+                onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+                  updateProject(i, { period: e.target.value })
+                }
                 placeholder={t('placeholderProjectPeriod')}
               />
             </Form.Item>
             <Form.Item label={t('description')}>
               <Input.TextArea
                 value={proj.description}
-                onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => updateProject(i, { description: e.target.value })}
+                onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+                  updateProject(i, { description: e.target.value })
+                }
                 placeholder={t('placeholderProjectDesc')}
                 rows={2}
               />
@@ -381,7 +409,9 @@ export function ResumeForm({ data, onChange }: ResumeFormProps) {
             <Form.Item label={t('linkOptional')}>
               <Input
                 value={proj.link ?? ''}
-                onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => updateProject(i, { link: e.target.value })}
+                onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+                  updateProject(i, { link: e.target.value })
+                }
                 placeholder="https://..."
               />
             </Form.Item>

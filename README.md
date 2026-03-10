@@ -13,14 +13,14 @@
 
 ## 技术栈
 
-| 技术 | 用途 |
-|------|------|
-| React 18 + TypeScript | 核心框架 |
-| Vite | 构建工具 |
-| UnoCSS | 原子化 CSS |
-| Ant Design 5 | UI 组件 |
-| i18next + react-i18next | 国际化 |
-| i18n-ally | 编辑器内联翻译提示（VS Code） |
+| 技术                    | 用途                          |
+| ----------------------- | ----------------------------- |
+| React 18 + TypeScript   | 核心框架                      |
+| Vite                    | 构建工具                      |
+| UnoCSS                  | 原子化 CSS                    |
+| Ant Design 5            | UI 组件                       |
+| i18next + react-i18next | 国际化                        |
+| i18n-ally               | 编辑器内联翻译提示（VS Code） |
 
 ## 快速开始
 
@@ -80,11 +80,11 @@ src/
 
 ## URL 参数说明
 
-| 参数 | 说明 | 示例 |
-|------|------|------|
-| `template` | 模板 ID | `classic` / `modern` / `minimal` |
-| `lang` | 界面语言 | `zh` / `en` |
-| `mode` | 模式 | `edit` / `preview` |
+| 参数       | 说明     | 示例                             |
+| ---------- | -------- | -------------------------------- |
+| `template` | 模板 ID  | `classic` / `modern` / `minimal` |
+| `lang`     | 界面语言 | `zh` / `en`                      |
+| `mode`     | 模式     | `edit` / `preview`               |
 
 示例：`/?template=minimal&lang=en&mode=preview` 打开极简模板、英文、预览模式。
 

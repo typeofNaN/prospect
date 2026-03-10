@@ -4,14 +4,14 @@ name: Build And Deploy To Github Pages
 # workflow的触发事件，这里代表main分支的push事件触发
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 # 任务
 jobs:
   # build-and-deploy 为任务的ID
   build-and-deploy:
     # 运行所需要的环境
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
 
     steps:
       # 步骤名
